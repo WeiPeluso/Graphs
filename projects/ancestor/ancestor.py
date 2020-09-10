@@ -60,11 +60,14 @@ def earliest_ancestor(ancestors, starting_node):
     # return -1 if there is no ancester
     earliestAncestor = -1
 
+    pathLength = 1
+
     while familyTree_q.size() > 0:
         path = familyTree_q.dequeue()
         farthest = path[-1]
-        if len(path) > 1:
+        if (len(path) >= pathLength and farthest < earliestAncestor) or len(path) > pathLength:
             earliestAncestor = farthest
+            pathLength = len(path)
 
         for neighbor in familyTree.get_neighbors(farthest):
             new_path = list(path)
