@@ -66,7 +66,6 @@ def earliest_ancestor(ancestors, starting_node):
         farthest = path[-1]
         if len(path) > pathLength:
             earliestAncestor = farthest
-            path_length = len(path)
 
         for neighbor in familyTree.get_neighbors(farthest):
             new_path = list(path)
